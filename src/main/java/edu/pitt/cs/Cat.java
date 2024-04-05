@@ -13,14 +13,18 @@ public interface Cat {
 			case SOLUTION:
 				return new CatSolution(id, name);
 			case MOCK:
-			    // TODO: Return a mock object that emulates the behavior of a real object.
-				return null;
+				Cat mockCat = Mockito.mock(Cat.class);
+				Mockito.when(mockCat.getId()).thenReturn(id);
+				Mockito.when(mockCat.getName()).thenReturn(name);
+				Mockito.when(mockCat.getRented()).thenReturn(false);
+				Mockito.when(mockCat.toString()).thenReturn("ID " + id + ". " + name);
+				return mockCat;
 			default:
 				assert(false);
 				return null;
 		}
 	}
-
+	// testing commit
 	// WARNING: You are not allowed to change any part of the interface.
 	// That means you cannot add any method nor modify any of these methods.
 	
